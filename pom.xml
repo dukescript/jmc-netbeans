@@ -62,91 +62,109 @@
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-api-annotations-common</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.owasp.encoder</groupId>
             <artifactId>encoder</artifactId>
             <version>1.2.1</version>
             <scope>compile</scope>
-        </dependency>        
+        </dependency>    
         <dependency>
             <groupId>org.openjdk.jmc</groupId>
             <artifactId>common</artifactId>
-            <version>7.0.0-SNAPSHOT</version>        
+            <version>${jmc.version}</version>
         </dependency>
+	
         <dependency>
             <groupId>org.openjdk.jmc</groupId>
             <artifactId>flightrecorder</artifactId>
-            <version>7.0.0-SNAPSHOT</version>        
+            <version>${jmc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmc</groupId>
             <artifactId>flightrecorder.rules</artifactId>
-            <version>7.0.0-SNAPSHOT</version>        
+            <version>${jmc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmc</groupId>
-            <artifactId>flightrecorder.jdk</artifactId>
-            <version>7.0.0-SNAPSHOT</version>        
-        </dependency>
+            <artifactId>flightrecorder.rules.jdk</artifactId>
+            <version>${jmc.version}</version>
+        </dependency>    
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-api-templates</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-filesystems</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-loaders</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-nodes</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-util</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-util-lookup</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-util-ui</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-core-multiview</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>       
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-windows</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-awt</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-dialogs</artifactId>
-            <version>RELEASE82</version>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-api-htmlui</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>net-java-html</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>net-java-html-json</artifactId>
+            <version>${netbeans.version}</version>
         </dependency>
     </dependencies>
     <properties>
+        <netbeans.version>RELEASE112</netbeans.version>
+        <jmc.version>8.0.0-SNAPSHOT</jmc.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>

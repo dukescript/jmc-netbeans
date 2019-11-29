@@ -8,15 +8,13 @@ package org.openjdk.jmc.netbeans;
 import java.awt.BorderLayout;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.web.WebView;
 import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
+import net.java.html.js.JavaScriptBody;
+import net.java.html.json.Model;
+import org.netbeans.api.htmlui.HTMLComponent;
 import org.netbeans.core.spi.multiview.CloseOperationState;
 import org.netbeans.core.spi.multiview.MultiViewElement;
 import org.netbeans.core.spi.multiview.MultiViewElementCallback;
@@ -24,6 +22,7 @@ import org.openide.awt.UndoRedo;
 import org.openide.util.Exceptions;
 import org.openide.util.Lookup;
 import org.openide.util.RequestProcessor;
+
 
 public final class JFRVisualElement extends JPanel implements MultiViewElement {
 
@@ -33,32 +32,22 @@ public final class JFRVisualElement extends JPanel implements MultiViewElement {
     
     private static RequestProcessor PROC = new RequestProcessor(JFRVisualElement.class);
     
-    
-    private WebView webView;
-
+   
     public JFRVisualElement(Lookup lkp) {
         obj = lkp.lookup(JFRDataObject.class);
         setName(obj.getNodeDelegate().getDisplayName());
         assert obj != null;
         initComponents();
-        JFXPanel jfxPanel = new JFXPanel();
-        this.add(jfxPanel, BorderLayout.CENTER);
-        BorderPane borderPane = new BorderPane();
-        Scene scene = new Scene(borderPane);
-        jfxPanel.setScene(scene);
-        Platform.runLater(() -> {
-            webView = new WebView();
-            borderPane.setCenter(webView);
-        });
+        final Report content =new Report();
+        this.add(Page.getPage(content), BorderLayout.CENTER);
+
         final Future<String> reportFuture = PROC.submit(() -> {
             return obj.getHTMLReport();
         });
         PROC.post(() -> {
             try {
                 String report = reportFuture.get();
-                Platform.runLater(() -> {                    
-                    webView.getEngine().loadContent(report);
-                });
+                content.setReport(report);
             } catch (InterruptedException | ExecutionException ex) {
                 Exceptions.printStackTrace(ex);
             }
@@ -141,5 +130,12 @@ public final class JFRVisualElement extends JPanel implements MultiViewElement {
     public CloseOperationState canCloseElement() {
         return CloseOperationState.STATE_OK;
     }
+    
+    @HTMLComponent(className = "Page", type = JComponent.class ,url = "JFRViewer.html")
+    public static void getPage(Report c){
+         c.applyBindings();       
+    }
+    
+
 
 }
